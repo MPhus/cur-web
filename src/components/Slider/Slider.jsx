@@ -1,12 +1,12 @@
-import { Box } from '@mui/material'
-function Slider() {
+import { Box, Button, Typography } from '@mui/material'
+function Slider({ slide }) {
 	return (
 		<Box sx={{
 			position: 'relative',
 			width: '100%',
-			height: '600px'
+			height: '600px',
 		}}>
-			<img src="https://scontent.fsgn5-8.fna.fbcdn.net/v/t39.30808-6/323165685_608106891081119_7820470230397909435_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=Cyb2ES7JnlkQ7kNvgFOzthe&_nc_ht=scontent.fsgn5-8.fna&oh=00_AYDz87ZbRDi3INAvyt8nYxbVrOixWCD9n-ho39pedvs6Vw&oe=6693B42B"
+			<img src={slide.thumb}
 				alt=""
 				style={{
 					position: 'absolute',
@@ -20,6 +20,83 @@ function Slider() {
 					filter: ' brightness(50%)'
 				}}
 			/>
+			<Box sx={{
+				position: 'absolute',
+				top: '32%',
+				right: '24%',
+				minWidth: '500px',
+				maxWidth: '520px',
+				textAlign: 'center'
+			}}>
+				<Box sx={{
+					'& .MuiTypography-root': {
+						color: 'primary.main',
+						fontFamily: 'fontFamily',
+						letterSpacing: '4px',
+						m: '0 0 20px 0'
+					}
+
+				}}>
+
+					<Typography variant="body1"
+						sx={{
+							fontWeight: 'bold'
+						}} >
+						{slide.title}
+					</Typography>
+
+					<Typography variant="h2"
+						sx={{
+							fontWeight: 'bold',
+							fontSize: '40px'
+						}} >
+						{slide.heading}
+					</Typography>
+
+					<Typography variant="body1"
+						sx={{
+							fontSize: '16px'
+						}} >
+						{slide.content}
+					</Typography>
+
+					<Typography variant="body1"
+						sx={{
+							fontWeight: '300',
+							fontSize: '16px'
+
+						}} >
+						{slide.description}
+					</Typography>
+
+				</Box>
+
+				<Box sx={{
+					display: 'flex',
+					mt: '32px',
+					alignItems: 'center',
+					justifyContent: 'space-evenly',
+					'& .MuiButton-root': {
+						textTransform: 'uppercase',
+						fontSize: '14px',
+						fontWeight: '700',
+						boxShadow: 'none',
+						minWidth: '200px',
+						border: '1px solid #fff',
+						borderRadius: '0px',
+						py: '8px',
+						transition: 'all linear .4s',
+						'&:hover': {
+							backgroundColor: 'primary.main',
+							color: 'primary.dark'
+						}
+					}
+				}}>
+
+					<Button variant="outlined" > shop Shirts</Button>
+					<Button variant="outlined" > shop Pants</Button>
+				</Box>
+			</Box>
 		</Box>
 	)
 }

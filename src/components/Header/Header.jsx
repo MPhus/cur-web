@@ -1,15 +1,15 @@
 import { ReactComponent as LogoIcon } from '~/assets/svgIcon/curlogob.svg'
-import { Button, SvgIcon } from '@mui/material';
-import Box from '@mui/material/Box';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
-import { useEffect, useState } from 'react';
+import { Button, SvgIcon } from '@mui/material'
+import Box from '@mui/material/Box'
+import LocalMallIcon from '@mui/icons-material/LocalMall'
+import { useEffect, useState } from 'react'
 
 function Header() {
 	const [blur, setBlur] = useState(false)
 
 	useEffect(() => {
 		function handleScroll() {
-			setBlur(window.scrollY > 120);
+			setBlur(window.scrollY > 120)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -90,6 +90,6 @@ function Header() {
 
 			</Box>
 		</Box >
-	);
+	)
 }
 export default Header

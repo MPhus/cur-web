@@ -1,13 +1,14 @@
-import Box from '@mui/material/Box';
+import Box from '@mui/material/Box'
 import { ReactComponent as LogoIcon2 } from '~/assets/svgIcon/curlogow.svg'
 import { ReactComponent as FaceBookIconSVG } from '~/assets/svgIcon/facebook-circle.svg'
 import { ReactComponent as InstagramIconSVG } from '~/assets/svgIcon/instagram-logo-fill.svg'
 import { ReactComponent as TiktokIconSVG } from '~/assets/svgIcon/tiktok.svg'
-import { SvgIcon, Typography } from '@mui/material';
-import Link from '@mui/material/Link';
-import PlaceIcon from '@mui/icons-material/Place';
-import SmartphoneIcon from '@mui/icons-material/Smartphone';
-import EmailIcon from '@mui/icons-material/Email';
+import { SvgIcon, Typography } from '@mui/material'
+import Link from '@mui/material/Link'
+import PlaceIcon from '@mui/icons-material/Place'
+import SmartphoneIcon from '@mui/icons-material/Smartphone'
+import EmailIcon from '@mui/icons-material/Email'
+
 function Footer() {
 	return (
 		<Box sx={{
@@ -18,10 +19,10 @@ function Footer() {
 			overflow: 'hidden',
 			backgroundColor: 'primary.dark',
 			p: '0 160px',
-			position: 'fixed', //relative
+			position: 'relative',
 			bottom: 0,
 			left: 0,
-			right: 0,
+			right: 0
 		}}>
 			<Box>
 				<SvgIcon component={LogoIcon2} inheritViewBox sx={{
@@ -30,7 +31,7 @@ function Footer() {
 				}} />
 			</Box>
 			<Box sx={{
-				maxWidth: '820px',
+				maxWidth: '820px'
 
 			}}>
 				<Typography variant="h5" sx={{ color: 'primary.main', fontFamily: 'fontCustom', m: '20px 0', fontWeight: 'bold', letterSpacing: '2px' }} >Address</Typography>
@@ -53,7 +54,7 @@ function Footer() {
 					'& .MuiTypography-root .MuiSvgIcon-root': {
 						fontSize: '22px',
 						m: ' 0 8px 4px 0'
-					},
+					}
 				}}>
 					<Link href="https://www.google.com/maps/place/Ti%E1%BB%87m+C%E1%BB%A7/@10.0370187,105.774216,18z/data=!4m15!1m8!3m7!1s0x31a088194a944cab:0xd667e641771b9205!2zSOG6u20gMTM4IMSQLiBUcuG6p24gSMawbmcgxJDhuqFvLCBBbiBOZ2hp4buHcCwgTmluaCBLaeG7gXUsIEPhuqduIFRoxqEsIFZp4buHdCBOYW0!3b1!8m2!3d10.0375253!4d105.7752675!16s%2Fg%2F11cn63dfr7!3m5!1s0x31a089bcc17f71bb:0xe454b8d6cd4c87b7!8m2!3d10.037361!4d105.7753366!16s%2Fg%2F11thdjqdb9?hl=vi&entry=ttu"
 						underline='none'
@@ -72,8 +73,7 @@ function Footer() {
 
 			</Box>
 			<Box sx={{
-				maxWidth: '820px',
-
+				maxWidth: '820px'
 			}}>
 				<Typography variant="h5" sx={{ color: 'primary.main', fontFamily: 'fontCustom', m: '20px 0', fontWeight: 'bold', letterSpacing: '2px' }} >Contact</Typography>
 
@@ -94,7 +94,7 @@ function Footer() {
 					'& .MuiTypography-root .MuiSvgIcon-root': {
 						fontSize: '22px',
 						m: ' 0 8px 4px 0'
-					},
+					}
 				}}>
 					<Link href="https://www.facebook.com/TiemCur" underline='none' target="_blank" variant="body1" >
 						<FaceBookIconSVG />
@@ -109,9 +109,7 @@ function Footer() {
 
 			</Box>
 
-
-
 		</Box >
-	);
+	)
 }
 export default Footer

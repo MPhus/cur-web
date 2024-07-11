@@ -4,20 +4,22 @@ export const mockData = {
 		thumbShirt: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702797/316940281_458793726367701_2108490475932759507_n_ca2j1n.jpg',
 		thumbPant: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702797/301693442_5406775299416357_2643294596215212952_n_ovueay.jpg',
 		slide: {
-			title: 'BEST SELLERS ITEMS',
+			title: 'RESTOCK ALERT',
+			heading: 'BEST SELLERS ITEMS',
 			content: 'UP TO 15% OFF',
 			description: 'The return of the most sought-after items.',
-			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702953/323165685_608106891081119_7820470230397909435_n_qf7xu8.jpg',
+			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702953/323165685_608106891081119_7820470230397909435_n_qf7xu8.jpg'
 		},
 		intro: {
 			title: '𝑂̛̉ 𝑐𝑎́𝑖 𝑇𝑖𝑒̣̂𝑚 𝐶𝑢̉, 𝑐𝑜́ 𝑛ℎ𝑢̛̃𝑛𝑔 𝑚𝑜́𝑛 𝑐𝑢̃',
 			content: 'Có những món đã cũ trước khi gặp Củ, tụi nó theo Củ một thời gian dài giờ thì đã cũ hơn Nhưng với tất cả tình cảm dành cho những món đồ có giá trị theo thời gian, thì tụi nó vẫn luôn được trân quý Đó cũng là lý do mà hơn 4 năm về trước tụi mình đã chọn khởi nghiệp bằng những gì đã cũ',
-			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720579851/hihiii_smyeu7.png',
+			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720579851/hihiii_smyeu7.png'
+			// thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720708214/slideDone_c8vkzs.png'
 		},
 		about: {
 			title: '',
 			content: '',
-			thumb: '',
+			thumb: ''
 		},
 		bestSeller: [
 			{

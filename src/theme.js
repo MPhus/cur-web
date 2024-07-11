@@ -14,10 +14,10 @@ const theme = extendTheme({
 		primary: {
 			main: '#fff',
 			dark: '#000',
-			contrastText: 'red',
+			contrastText: 'red'
 		},
 		text: {
-			primary: '#000',
+			primary: '#000'
 		},
 		background: {
 			default: '#fff',
@@ -26,7 +26,8 @@ const theme = extendTheme({
 	},
 	typography: {
 		fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
-		fontCustom: '"Anek Odia", sans-serif'
+		fontCustom: '"Anek Odia", sans-serif',
+		fontPE: '"Playwrite PE"'
 	},
 	components: {
 		MuiCssBaseline: {
