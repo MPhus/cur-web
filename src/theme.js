@@ -14,7 +14,7 @@ const theme = extendTheme({
 		primary: {
 			main: '#fff',
 			dark: '#000',
-			contrastText: 'red'
+			contrastText: '#000'
 		},
 		text: {
 			primary: '#000'
