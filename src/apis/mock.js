@@ -13,8 +13,7 @@ export const mockData = {
 		intro: {
 			title: '𝑂̛̉ 𝑐𝑎́𝑖 𝑇𝑖𝑒̣̂𝑚 𝐶𝑢̉, 𝑐𝑜́ 𝑛ℎ𝑢̛̃𝑛𝑔 𝑚𝑜́𝑛 𝑐𝑢̃',
 			content: 'Có những món đã cũ trước khi gặp Củ, tụi nó theo Củ một thời gian dài giờ thì đã cũ hơn Nhưng với tất cả tình cảm dành cho những món đồ có giá trị theo thời gian, thì tụi nó vẫn luôn được trân quý Đó cũng là lý do mà hơn 4 năm về trước tụi mình đã chọn khởi nghiệp bằng những gì đã cũ',
-			// thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720708214/slideDone_c8vkzs.png'
-			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720579851/hihiii_smyeu7.png'
+			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720708214/slideDone_c8vkzs.png'
 		},
 		about: {
 			title: 'Chào những Củ\'er',

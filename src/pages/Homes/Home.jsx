@@ -15,8 +15,9 @@ function Home() {
 	const bottomBestSeller = maxForQuantityAndType(bottomList, 4, 'sold')
 
 	return (
-		<div >
+		<div style={{ overflow: 'hidden' }} >
 			<Header />
+
 			<Slider slide={mockData.page.slide} />
 
 			<Intro intro={mockData.page.intro} />
@@ -26,13 +27,26 @@ function Home() {
 			<Box sx={{
 				display: 'flex',
 				maxWidth: '100%',
-				p: '20px',
+				flexDirection: {
+					xs: 'column',
+					md: 'row'
+				},
+				p: {
+					xs: '0',
+					md: '20px'
+				},
 				justifyContent: 'space-between',
 				alignItems: 'center'
 			}}>
 				<Box sx={{
-					flex: '0 0 50%',
-					maxWidth: '50%'
+					flex: {
+						xs: '0 0 100%',
+						md: '0 0 50%'
+					},
+					maxWidth: {
+						xs: '100%',
+						md: '50%'
+					}
 				}}>
 					<img src={mockData.page.thumbShirt}
 						alt=""
@@ -44,8 +58,14 @@ function Home() {
 
 				</Box>
 				<Box sx={{
-					flex: '0 0 50%',
-					maxWidth: '50%'
+					flex: {
+						xs: '0 0 100%',
+						md: '0 0 50%'
+					},
+					maxWidth: {
+						xs: '100%',
+						md: '50%'
+					}
 				}}>
 					<img src={mockData.page.thumbPant}
 						alt=""

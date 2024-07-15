@@ -1,14 +1,33 @@
+import { useEffect, useState } from 'react'
 import { ReactComponent as LogoIcon } from '~/assets/svgIcon/curlogob.svg'
-import { Button, SvgIcon } from '@mui/material'
+import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black.svg'
+import { ReactComponent as ShirtIcon } from '~/assets/svgIcon/tshirt.svg'
+import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
+import Button from '@mui/material/Button'
+import Drawer from '@mui/material/Drawer'
+import MenuList from '@mui/material/MenuList'
+import SvgIcon from '@mui/material/SvgIcon'
+import Tooltip from '@mui/material/Tooltip'
 import Box from '@mui/material/Box'
 import LocalMallIcon from '@mui/icons-material/LocalMall'
-import { useEffect, useState } from 'react'
+import MenuItem from '@mui/material/MenuItem'
+import MenuIcon from '@mui/icons-material/Menu'
+import CloseIcon from '@mui/icons-material/Close'
 
 function Header() {
 	const [blur, setBlur] = useState(false)
+	const [openMenu, setOpenMenu] = useState(false)
+	const [openCart, setOpenCart] = useState(false)
+
+	const toggleMenu = (newOpen) => () => {
+		setOpenMenu(newOpen)
+	}
+	const toggleCart = (newOpen) => () => {
+		setOpenCart(newOpen)
+	}
 
 	useEffect(() => {
-		function handleScroll() {
+		const handleScroll = () => {
 			setBlur(window.scrollY > 120)
 		}
 
@@ -27,7 +46,10 @@ function Header() {
 			overflowX: 'auto',
 			paddingX: 2,
 			backgroundColor: blur ? 'primary.dark' : 'transparent',
-			p: '0 64px',
+			padding: {
+				xs: '0 12px',
+				md: '0 64px'
+			},
 			position: 'fixed',
 			top: 0,
 			left: 0,
@@ -36,11 +58,24 @@ function Header() {
 			borderBottom: '1px solid #fff'
 		}}>
 			<Box sx={{
-				display: 'flex',
+				display: {
+					xs: 'none',
+					md: 'flex'
+				},
 				alignItems: 'center',
 				justifyContent: 'space-between',
 				maxWidth: '350px',
-				minWidth: '350px',
+				// backgroundColor: {
+				// 	xs: 'red',
+				// 	sm: 'blue',
+				// 	md: 'green',
+				// 	lg: 'yellow',
+				// 	xl: 'purple'
+				// },
+				minWidth: {
+					md: '300px',
+					lg: '350px'
+				},
 				'& .MuiButton-root': {
 					textTransform: 'uppercase',
 					fontSize: '16px',
@@ -59,9 +94,80 @@ function Header() {
 
 
 			</Box>
+
 			<Box sx={{
+				display: { md: 'none' }
 
 			}}>
+				<Tooltip title="Menu">
+					<Button
+						onClick={toggleMenu(true)}
+					>
+						<MenuIcon sx={{
+							color: 'primary.main',
+							cursor: 'pointer'
+						}} />
+					</Button>
+				</Tooltip>
+
+				<Drawer
+					open={openMenu} onClose={toggleMenu(false)} sx={{
+						'& .MuiPaper-root': {
+							width: {
+								xs: '100%',
+								sm: '50%'
+							}
+						}
+					}}
+				>
+					<MenuList sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '24px',
+						p: '12px 8px',
+						'& .MuiMenuItem-root': {
+							textTransform: 'uppercase',
+							fontSize: '20px',
+							boxShadow: 'none',
+							borderRadius: '0px',
+							width: '100%',
+							color: 'primary.dark',
+							justifyContent: 'flex-start',
+							gap: '16px',
+							letterSpacing: '2px'
+						}
+					}}>
+						<Button sx={{
+							alignSelf: 'flex-end',
+							color: 'primary.dark',
+							width: '32px',
+							height: '32px'
+						}} onClick={toggleMenu(false)}>
+							<CloseIcon sx={{ fontSize: '28px' }} />
+						</Button>
+						<MenuItem>
+							<ShirtIcon />
+							Shirts
+						</MenuItem>
+
+						<MenuItem>
+							<PantIcon />Pants
+						</MenuItem>
+
+						<MenuItem>
+							<LogoIconBlack />About CUR
+						</MenuItem>
+						<SvgIcon component={LogoIconBlack} inheritViewBox sx={{
+							height: '100px',
+							width: '100px',
+							alignSelf: 'center',
+							flex: '1'
+						}} />
+					</MenuList>
+				</Drawer>
+			</Box>
+
+			<Box>
 				<SvgIcon component={LogoIcon} inheritViewBox sx={{
 					height: '100%',
 					width: '64px'
@@ -71,10 +177,17 @@ function Header() {
 			<Box sx={{
 				display: 'flex',
 				maxWidth: '350px',
-				minWidth: '350px',
+				minWidth: {
+					md: '300px',
+					lg: '350px'
+				},
 				justifyContent: 'flex-end'
 			}}>
-				<Button variant="text" sx={{
+				<Button onClick={toggleCart(true)} variant="text" sx={{
+					display: {
+						xs: 'none',
+						md: 'inline-flex'
+					},
 					textTransform: 'uppercase',
 					fontSize: '16px',
 					borderBottom: '1px solid transparent',
@@ -87,6 +200,72 @@ function Header() {
 						mb: '8px'
 					}
 				}} endIcon={<LocalMallIcon />}>Card</Button>
+
+				<Button onClick={toggleCart(true)} sx={{
+					display: {
+						xs: 'block',
+						md: 'none'
+					}
+				}}>
+					<LocalMallIcon sx={{
+						mt: '4px'
+					}} />
+				</Button>
+				<Drawer
+					open={openCart} onClose={toggleCart(false)} anchor='right' sx={{
+						'& .MuiPaper-root': {
+							width: {
+								xs: '100%',
+								sm: '50%'
+							}
+						}
+					}}
+				>
+					<MenuList sx={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '24px',
+						p: '12px 8px',
+						'& .MuiMenuItem-root': {
+							textTransform: 'uppercase',
+							fontSize: '20px',
+							boxShadow: 'none',
+							borderRadius: '0px',
+							width: '100%',
+							color: 'primary.dark',
+							justifyContent: 'flex-start',
+							gap: '16px',
+							letterSpacing: '2px'
+						}
+					}}>
+						<Button sx={{
+							alignSelf: 'flex-end',
+							color: 'primary.dark',
+							width: '32px',
+							height: '32px'
+						}} onClick={toggleCart(false)}>
+							<CloseIcon sx={{ fontSize: '28px' }} />
+						</Button>
+						<MenuItem>
+							<ShirtIcon />
+							Shirts
+						</MenuItem>
+
+						<MenuItem>
+							<PantIcon />Pants
+						</MenuItem>
+
+						<MenuItem>
+							<LogoIconBlack />About CUR
+						</MenuItem>
+						<SvgIcon component={LogoIconBlack} inheritViewBox sx={{
+							height: '100px',
+							width: '100px',
+							alignSelf: 'center',
+							flex: '1'
+						}} />
+					</MenuList>
+				</Drawer>
 
 			</Box>
 		</Box >

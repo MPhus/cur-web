@@ -1,36 +1,60 @@
-import { Button } from '@mui/material'
+import { useEffect, useState } from 'react'
+import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
 function About({ about }) {
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+	useEffect(() => {
+		const hadleResize = (event) => {
+			setWindowWidth(event.srcElement.innerWidth)
+		}
+		window.addEventListener('resize', hadleResize)
+		return () => {
+			window.removeEventListener('resize', hadleResize)
+		}
+	}, [])
+	const numberOfP = Math.floor(windowWidth / 300)
+
 	return (
 		<Box sx={{
 			maxWidth: '100%',
 			margin: '80px auto 40px',
-			display: 'flex',
-			alignItems: 'center'
+			display: {
+				xs: 'none',
+				sm: 'flex'
+			},
+			alignItems: 'center',
+			padding: '0 20px'
 		}}>
-			<Box>
+			<Box sx={{
+				flex: '0 0 50%',
+				maxWidth: '50%'
+			}}>
 				<img src={about.thumb}
 					alt=""
 					style={{
-						maxWidth: '900px',
-						minWidth: '900px',
-						maxHeight: '900px',
-						minHeight: '900px',
-						margin: ' 0 40px'
+						maxWidth: '100%',
+						minWidth: '100%'
 					}}
 				/>
 			</Box>
 			<Box sx={{
-				p: '0 80px',
+				p: {
+					xs: '0 12px',
+					md: '0 80px'
+				},
 				textAlign: 'left',
 				fontFamily: 'fontCustom',
-				maxWidth: '880px',
+				flex: '0 0 50%',
+				maxWidth: '50%',
 				'& .MuiTypography-root.MuiTypography-h1': {
 					maxWidth: '500px',
 					fontWeight: '300',
-					fontSize: '40px',
+					fontSize: {
+						xs: '32px',
+						md: '40px'
+					},
 					lineHeight: '44px',
 					letterSpacing: '4px',
 					p: '8px 0'
@@ -39,9 +63,15 @@ function About({ about }) {
 					color: 'primary.main',
 					backgroundColor: 'primary.dark',
 					textTransform: 'uppercase',
-					fontSize: '16px',
+					fontSize: {
+						xs: '12px',
+						md: '16px'
+					},
 					p: '8px',
-					minWidth: '160px',
+					minWidth: {
+						xs: '80px',
+						md: '160px'
+					},
 					maxWidth: '160px',
 					borderRadius: 'none',
 					mt: '16px',
@@ -58,16 +88,21 @@ function About({ about }) {
 						fontSize: '16px',
 						letterSpacing: '2px',
 						fontFamily: 'fontPE',
-						m: '8px 0'
+						m: '8px 0',
+						overflow: 'hidden'
 					}
 				}}>
-					{about.content.split('\n').map((content, index) =>
-						<Typography
-							variant="body1"
-							component="p" key={index}
-						>
-							{content}
-						</Typography>
+					{about.content.split('\n').map((content, index) => {
+						if (index >= numberOfP - 1) return
+						return (
+							<Typography
+								variant="body1"
+								component="p" key={index}
+							>
+								{content}
+							</Typography>
+						)
+					}
 					)}
 				</Box>
 				<Button variant="contained">Read More</Button>

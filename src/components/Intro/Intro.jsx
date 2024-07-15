@@ -4,9 +4,17 @@ import Typography from '@mui/material/Typography'
 function Intro({ intro }) {
 	return (
 		<Box sx={{
-			maxWidth: '1200px',
+			maxWidth: {
+				xs: '100%',
+				md: '960px',
+				lg: '1200px'
+			},
 			margin: '80px auto 40px',
 			textAlign: 'center',
+			padding: {
+				xs: ' 0 32px',
+				md: 'none'
+			},
 			'& .MuiTypography-root.MuiTypography-h1': {
 				fontWeight: '300',
 				fontSize: '32px',
@@ -39,6 +47,7 @@ function Intro({ intro }) {
 			<img src={intro.thumb}
 				alt=""
 				style={{
+					maxWidth: '100%'
 				}}
 			/>
 		</Box >

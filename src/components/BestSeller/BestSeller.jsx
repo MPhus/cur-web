@@ -6,7 +6,7 @@ import CardMedia from '@mui/material/CardMedia'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
-const PADDING_CARD = '16px'
+
 function BestSeller({ bestSeller }) {
 	const productType = bestSeller[0].type === 'top' ? 'shirt' : 'pant'
 	return (
@@ -16,7 +16,6 @@ function BestSeller({ bestSeller }) {
 			backgroundColor: 'primary.dark',
 			padding: '40px 0'
 		}}>
-
 			<Box sx={{
 				textAlign: 'center'
 			}}>
@@ -34,23 +33,34 @@ function BestSeller({ bestSeller }) {
 			</Box>
 
 			<Box sx={{
-				maxWidth: '1200px',
+				maxWidth: {
+					md: '900px',
+					lg: '1200px'
+				},
 				margin: '0 auto',
 				display: 'flex',
 				alignItems: 'center',
-				overflowX: 'auto',
-				justifyContent: 'space-between',
-				p: '32px 0'
+				flexWrap: 'wrap',
+				justifyContent: {
+					xs: 'center',
+					lg: 'space-between'
+				},
+				gap: {
+					xs: '16px',
+					lg: 0
+				},
+				p: '32px 20px'
 			}}>
 				{bestSeller.map(item => (
 					<Card key={item._id}
 						sx={{
-							maxWidth: '280px',
 							minWidth: '280px',
+							maxWidth: '280px',
 							minHeight: '380px',
 							maxHeight: '380px',
 							backgroundColor: 'primary.main',
-							p: PADDING_CARD,
+							p: '16px',
+							mb: '24px',
 							color: 'primary.dark',
 							position: 'relative',
 							cursor: 'pointer',

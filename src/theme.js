@@ -21,7 +21,7 @@ const theme = extendTheme({
 		},
 		background: {
 			default: '#fff',
-			paper: '#d7ebc7'
+			paper: '#fff'
 		}
 	},
 	typography: {
