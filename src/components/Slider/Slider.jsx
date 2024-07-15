@@ -1,10 +1,13 @@
-import { Box, Button, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Typography from '@mui/material/Typography'
+
 function Slider({ slide }) {
 	return (
 		<Box sx={{
 			position: 'relative',
 			width: '100%',
-			height: '600px',
+			height: '600px'
 		}}>
 			<img src={slide.thumb}
 				alt=""
@@ -23,8 +26,18 @@ function Slider({ slide }) {
 			<Box sx={{
 				position: 'absolute',
 				top: '32%',
-				right: '24%',
-				minWidth: '500px',
+				right: {
+					xs: '50%',
+					lg: '24%'
+				},
+				transform: {
+					xs: 'translateX(50%)',
+					lg: 'none'
+				},
+				minWidth: {
+					xs: '320px',
+					md: '500px'
+				},
 				maxWidth: '520px',
 				textAlign: 'center'
 			}}>
@@ -48,7 +61,10 @@ function Slider({ slide }) {
 					<Typography variant="h2"
 						sx={{
 							fontWeight: 'bold',
-							fontSize: '40px'
+							fontSize: {
+								xs: '20px',
+								md: '40px'
+							}
 						}} >
 						{slide.heading}
 					</Typography>
@@ -63,7 +79,10 @@ function Slider({ slide }) {
 					<Typography variant="body1"
 						sx={{
 							fontWeight: '300',
-							fontSize: '16px'
+							fontSize: {
+								xs: '12px',
+								md: '16px'
+							}
 
 						}} >
 						{slide.description}
@@ -78,10 +97,16 @@ function Slider({ slide }) {
 					justifyContent: 'space-evenly',
 					'& .MuiButton-root': {
 						textTransform: 'uppercase',
-						fontSize: '14px',
+						fontSize: {
+							xs: '12px',
+							md: '14px'
+						},
 						fontWeight: '700',
 						boxShadow: 'none',
-						minWidth: '200px',
+						minWidth: {
+							xs: '80px',
+							md: '200px'
+						},
 						border: '1px solid #fff',
 						borderRadius: '0px',
 						py: '8px',

@@ -8,9 +8,9 @@ import theme from './theme'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <CssVarsProvider theme={theme}>
-    <React.StrictMode>
+    <React.Fragment>
       <CssBaseline />
       <App />
-    </React.StrictMode>
+    </React.Fragment>
   </CssVarsProvider>
 )
