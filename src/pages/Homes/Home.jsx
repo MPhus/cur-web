@@ -16,6 +16,7 @@ function Home() {
 
 	return (
 		<div style={{ overflow: 'hidden' }} >
+
 			<Header />
 
 			<Slider slide={mockData.page.slide} />

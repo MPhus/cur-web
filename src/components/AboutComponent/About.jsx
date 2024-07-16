@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import { Link } from 'react-router-dom'
 
 function About({ about }) {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
@@ -67,7 +68,7 @@ function About({ about }) {
 						xs: '12px',
 						md: '16px'
 					},
-					p: '8px',
+					p: '0',
 					minWidth: {
 						xs: '80px',
 						md: '160px'
@@ -78,8 +79,13 @@ function About({ about }) {
 					'&:hover': {
 						opacity: 0.8
 					}
+				},
+				'& a': {
+					textDecoration: 'none',
+					color: 'primary.main',
+					p: '8px',
+					width: '100%'
 				}
-
 			}}>
 				<Typography variant="h1">{about.title}</Typography>
 
@@ -105,7 +111,7 @@ function About({ about }) {
 					}
 					)}
 				</Box>
-				<Button variant="contained">Read More</Button>
+				<Button variant="contained"><Link to='/about-cur'>Read more</Link></Button>
 
 			</Box>
 

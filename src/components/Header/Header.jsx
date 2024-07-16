@@ -1,8 +1,5 @@
 import { useEffect, useState } from 'react'
-import { ReactComponent as LogoIcon } from '~/assets/svgIcon/curlogob.svg'
-import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black.svg'
-import { ReactComponent as ShirtIcon } from '~/assets/svgIcon/tshirt.svg'
-import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
+import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import MenuList from '@mui/material/MenuList'
@@ -13,6 +10,11 @@ import LocalMallIcon from '@mui/icons-material/LocalMall'
 import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+
+import { ReactComponent as LogoIcon } from '~/assets/svgIcon/curlogob.svg'
+import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black.svg'
+import { ReactComponent as ShirtIcon } from '~/assets/svgIcon/tshirt.svg'
+import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
 
 function Header() {
 	const [blur, setBlur] = useState(false)
@@ -76,21 +78,32 @@ function Header() {
 					md: '300px',
 					lg: '350px'
 				},
-				'& .MuiButton-root': {
+				'& a': {
 					textTransform: 'uppercase',
 					fontSize: '16px',
 					borderBottom: '1px solid transparent',
 					boxShadow: 'none',
 					borderRadius: '0px',
+					color: 'primary.main',
+					textDecoration: 'none',
+					minWidth: '90px',
 					'&:hover': {
 						borderBottom: '1px solid #fff'
 					}
 				}
 			}}>
+				<Button variant="text" >
+					<Link to='/store'>
+						Shirts
+					</Link>
+				</Button>
 
-				<Button variant="text" >Shirts</Button>
-				<Button variant="text" >Pants</Button>
-				<Button variant="text" >About CUR</Button>
+				<Button variant="text" >
+					<Link to='/store'>Pants</Link>
+				</Button>
+				<Button variant="text" >
+					<Link to='/about-cur'>About Cur</Link>
+				</Button>
 
 
 			</Box>
@@ -131,10 +144,15 @@ function Header() {
 							boxShadow: 'none',
 							borderRadius: '0px',
 							width: '100%',
-							color: 'primary.dark',
-							justifyContent: 'flex-start',
+							justifyContent: 'flex-start'
+						},
+						'& .MuiMenuItem-root a': {
+							display: 'flex',
 							gap: '16px',
-							letterSpacing: '2px'
+							width: '100%',
+							color: 'primary.dark',
+							letterSpacing: '2px',
+							textDecoration: 'none'
 						}
 					}}>
 						<Button sx={{
@@ -146,16 +164,22 @@ function Header() {
 							<CloseIcon sx={{ fontSize: '28px' }} />
 						</Button>
 						<MenuItem>
-							<ShirtIcon />
-							Shirts
+							<Link to='/store'>
+								<ShirtIcon />
+								Shirts
+							</Link>
 						</MenuItem>
 
 						<MenuItem>
-							<PantIcon />Pants
+							<Link to='/store'>
+								<PantIcon />Pants
+							</Link>
 						</MenuItem>
 
 						<MenuItem>
-							<LogoIconBlack />About CUR
+							<Link to='/about-cur'>
+								<LogoIconBlack />About CUR
+							</Link>
 						</MenuItem>
 						<SvgIcon component={LogoIconBlack} inheritViewBox sx={{
 							height: '100px',
@@ -168,10 +192,13 @@ function Header() {
 			</Box>
 
 			<Box>
-				<SvgIcon component={LogoIcon} inheritViewBox sx={{
-					height: '100%',
-					width: '64px'
-				}} />
+				<Link to='/'>
+					<SvgIcon component={LogoIcon} inheritViewBox sx={{
+						height: '100%',
+						width: '64px'
+					}} />
+				</Link>
+
 			</Box>
 
 			<Box sx={{
