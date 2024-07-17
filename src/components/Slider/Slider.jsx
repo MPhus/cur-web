@@ -2,12 +2,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-function Slider({ slide }) {
+function Slider({ slide, homePage }) {
+
 	return (
 		<Box sx={{
 			position: 'relative',
 			width: '100%',
-			height: '600px'
+			height: '800px'
 		}}>
 			<img src={slide.thumb}
 				alt=""
@@ -20,15 +21,15 @@ function Slider({ slide }) {
 					maxHeight: '100%',
 					objectFit: 'cover',
 					objectPosition: 'center center',
-					filter: ' brightness(50%)'
+					filter: 'brightness(64%)'
 				}}
 			/>
 			<Box sx={{
 				position: 'absolute',
-				top: '32%',
+				top: '24%',
 				right: {
 					xs: '50%',
-					lg: '24%'
+					lg: '10%'
 				},
 				transform: {
 					xs: 'translateX(50%)',
@@ -38,7 +39,7 @@ function Slider({ slide }) {
 					xs: '320px',
 					md: '500px'
 				},
-				maxWidth: '520px',
+				maxWidth: '600px',
 				textAlign: 'center'
 			}}>
 				<Box sx={{
@@ -47,6 +48,9 @@ function Slider({ slide }) {
 						fontFamily: 'fontFamily',
 						letterSpacing: '4px',
 						m: '0 0 20px 0'
+					},
+					'& .MuiTypography-root.MuiTypography-body1': {
+						fontSize: '16px'
 					}
 
 				}}>
@@ -57,8 +61,7 @@ function Slider({ slide }) {
 						}} >
 						{slide.title}
 					</Typography>
-
-					<Typography variant="h2"
+					{homePage && <Typography variant="h2"
 						sx={{
 							fontWeight: 'bold',
 							fontSize: {
@@ -67,24 +70,9 @@ function Slider({ slide }) {
 							}
 						}} >
 						{slide.heading}
-					</Typography>
-
-					<Typography variant="body1"
-						sx={{
-							fontSize: '16px'
-						}} >
-						{slide.content}
-					</Typography>
-
-					<Typography variant="body1"
-						sx={{
-							fontWeight: '300',
-							fontSize: {
-								xs: '12px',
-								md: '16px'
-							}
-
-						}} >
+					</Typography>}
+					{slide.content.split('\n').map((content, index) => <Typography variant="body1" key={index}>{content}</Typography>)}
+					<Typography variant="body1">
 						{slide.description}
 					</Typography>
 
@@ -117,11 +105,9 @@ function Slider({ slide }) {
 						}
 					}
 				}}>
-
-					<Button variant="outlined" > shop Shirts</Button>
-					<Button variant="outlined" > shop Pants</Button>
 				</Box>
 			</Box>
+
 		</Box>
 	)
 }

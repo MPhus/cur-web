@@ -16,7 +16,7 @@ import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black
 import { ReactComponent as ShirtIcon } from '~/assets/svgIcon/tshirt.svg'
 import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
 
-function Header() {
+function Header({ homePage }) {
 	const [blur, setBlur] = useState(false)
 	const [openMenu, setOpenMenu] = useState(false)
 	const [openCart, setOpenCart] = useState(false)
@@ -78,6 +78,9 @@ function Header() {
 					md: '300px',
 					lg: '350px'
 				},
+				'& .MuiButtonBase-root': {
+					p: 0
+				},
 				'& a': {
 					textTransform: 'uppercase',
 					fontSize: '16px',
@@ -87,6 +90,7 @@ function Header() {
 					color: 'primary.main',
 					textDecoration: 'none',
 					minWidth: '90px',
+					p: '8px',
 					'&:hover': {
 						borderBottom: '1px solid #fff'
 					}
@@ -102,7 +106,7 @@ function Header() {
 					<Link to='/store'>Pants</Link>
 				</Button>
 				<Button variant="text" >
-					<Link to='/about-cur'>About Cur</Link>
+					<Link to='/other'>Other...</Link>
 				</Button>
 
 
@@ -177,8 +181,8 @@ function Header() {
 						</MenuItem>
 
 						<MenuItem>
-							<Link to='/about-cur'>
-								<LogoIconBlack />About CUR
+							<Link to='/other'>
+								<LogoIconBlack />Other...
 							</Link>
 						</MenuItem>
 						<SvgIcon component={LogoIconBlack} inheritViewBox sx={{
