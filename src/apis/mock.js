@@ -1,14 +1,21 @@
 export const mockData = {
-	page: {
+	homePage: {
 		_id: 'home-page',
 		thumbShirt: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702797/316940281_458793726367701_2108490475932759507_n_ca2j1n.jpg',
 		thumbPant: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702797/301693442_5406775299416357_2643294596215212952_n_ovueay.jpg',
+		// slide: {
+		// 	title: 'RESTOCK ALERT',
+		// 	heading: 'BEST SELLERS ITEMS',
+		// 	content: 'UP TO 15% OFF',
+		// 	description: 'The return of the most sought-after items.',
+		// 	thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702953/323165685_608106891081119_7820470230397909435_n_qf7xu8.jpg'
+		// },
 		slide: {
-			title: 'RESTOCK ALERT',
-			heading: 'BEST SELLERS ITEMS',
-			content: 'UP TO 15% OFF',
-			description: 'The return of the most sought-after items.',
-			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1720702953/323165685_608106891081119_7820470230397909435_n_qf7xu8.jpg'
+			title: '138/8 𝑻𝒓𝒂̂̀𝒏 𝑯𝒖̛𝒏𝒈 Đ𝒂̣𝒐',
+			heading: 'Trong con hẻm này có một tiệm đồ si dành riêng cho mấy gã Đàn Ông',
+			content: 'Tụi tui vẫn luôn ở đây, cùng với tất cả những gì chỉn chu nhất có thể, để luôn sẵn sàng trở thành một phần đồng hành cùng hành trình của những gã Đàn Ông đạo mạo',
+			description: '- 𝑇𝑖𝑒̣̂𝑚 𝐶𝑢̉ -',
+			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721112020/422409474_694375446142860_7560533461656277863_n_qdeo92.jpg'
 		},
 		intro: {
 			title: '𝑂̛̉ 𝑐𝑎́𝑖 𝑇𝑖𝑒̣̂𝑚 𝐶𝑢̉, 𝑐𝑜́ 𝑛ℎ𝑢̛̃𝑛𝑔 𝑚𝑜́𝑛 𝑐𝑢̃',
@@ -69,6 +76,58 @@ export const mockData = {
 				]
 			}
 		]
+	},
+	otherPage: {
+		_id: 'about-page',
+		slide: {
+			title: 'Thị trấn bình thường',
+			content: 'Trong Thị Trấn có một quầy nước bình thường, tiệm đồ si bình dị, Cái Túi và Con Gấu si bình lặng, khu vườn nhỏ bình yên … và mang đến những điều hạnh phúc bình thường\nMột ngày đẹp trời nào đó, nếu bạn muốn tìm đến những “điều bình thường rất thật” thì hãy Lạc đến tụi mình, Lạc đến Thị Trấn Bình Thường',
+			description: '-Củ đi Lạc-',
+			thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721113088/351311852_811057347254034_1716949600595932988_n_br40az.jpg'
+
+		},
+		newsList: [
+			{
+				title: 'Hôm nay những đám mây như sà xuống chơi… ',
+				content: 'Mấy nay cứ chiều là bầu trời âm u, những cơn mưa dầm làm tụi mình khó gặp nhau hơn!\nNhưng mà đây cũng là điều kiện để tụi mình chăm sóc lại khu vườn nhỏ trong Thị Trấn Bình Thường này…\nĐể rồi một ngày nắng đẹp, tụi mình sẽ chỉn chu và xinh xắn hơn để gặp lại mọi người',
+				thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721117919/slideCudiLac_pefkak.png',
+				isDark: false,
+				isCenter: false,
+				order: 5
+			},
+			{
+				title: 'Thong dong đêm số 8',
+				content: 'Tụi mình quyết định vẫn thực hiện đêm nhạc và các bạn vẫn quyết định ngồi thong dong nghe tụi mình hát, nghe tụi mình hàn thuyên về những thanh âm cho một cuộc sống đầy tích cực\nMột sân khấu dựng tạm, một chiếc lều nhỏ, những chiếc ô cầm tay … và những tâm hồn hướng đến những điều tích cực đã làm nên một đêm nhạc chữa lành cho tất cả\nCảm ơn tất cả các Cậu. ',
+				thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721184766/428704794_775794591409278_2300054024883733401_n_zrprp9.jpg',
+				isDark: false,
+				isCenter: false,
+				order: 3
+			},
+			{
+				title: 'Đúng thời gian này 1 năm về trước, tụi mình bắt tay vào xây dựng Củ đi Lạc',
+				content: 'Có một sự thật về ý tưởng ban đầu của tụi mình không phải là mô hình quán cafe\nNhưng vì một điều kì diệu nào đó, “Cà Phê Củ đi Lạc” của tụi mình đã ở đây suốt 1 năm vừa qua\nĐiều kỳ diệu nào đó ư ??? , tụi mình biết chắc chắn đó chính là những tình cảm, những sự ủng hộ mỗi ngày của tất cả các bạn đã dành cho\nBiết mình còn nhiều thiếu sót, nhưng thời gian tới tụi mình sẽ thật sự chuyển mình về cả chất lượng các món uống cho đến không gian thưởng thức để đáp lại những tình cảm chân thành của các bạn\nVẫn là Củ đi Lạc, bạn quán nước không gian mở hoàn toàn với các món nước truyền thống nhưng ở “nấc thang” cao hơn, một lần nữa Củ đi Lạc cảm ơn và luôn hẹn gặp lại.',
+				thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721187290/coffee_johdoz.png',
+				isDark: false,
+				isCenter: true,
+				order: 1
+			},
+			{
+				title: 'Nhóm Trà Tươi Giải Nhiệt của tụi mình nè',
+				content: 'Dành cho những bạn không uống được cafe hoặc đang muốn một ngày thật ngọt - mát\nCác bạn có thể gọi Siro Hoa Bụp Giấm, Trà Cam Sả (hỏng có đào) hoặc đơn giản là Trà Chanh Đường\nVì là dòng thức uống từ trái cây tươi nên đôi lúc sẽ có sự “nhỉnh” hơn về hương vị, có gì mấy bạn cứ yêu cầu điều chỉnh cho hợp khẩu vị nhé.',
+				thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721186019/tropical_rheaee.png',
+				isDark: true,
+				isCenter: false,
+				order: 2
+			},
+			{
+				title: 'Một buổi sáng cùng những nỗi buồn thật đẹp…',
+				content: 'Lâu lắm rồi mới có một buổi sáng chỉ mỗi tụi mình và 1 bạn khách quen duy nhất, cũng vắng, cũng lặng nhưng tự nhiên những khoảng lặng như vầy cũng giúp tụi mình yêu thêm nơi này!\nMột khoảng lặng cần thiết để chăm sóc, để ngắm nhìn những gì mà tụi mình đã và đang theo đuổi\nCảm ơn đã đi Lạc đến Thị trấn Bình Thường.',
+				thumb: 'https://res.cloudinary.com/dwa6hiofs/image/upload/v1721189075/dark_e2szpy.png',
+				isDark: true,
+				isCenter: true,
+				order: 4
+			},
+		],
 	},
 	products: [
 		{

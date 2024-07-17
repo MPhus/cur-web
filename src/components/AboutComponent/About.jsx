@@ -1,13 +1,32 @@
 import { useEffect, useState } from 'react'
-import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { Link } from 'react-router-dom'
 
-function About({ about }) {
+function About({ about, darkTheme }) {
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+	const [isShow, setIsShow] = useState(false)
+
+	const originContent = about.content.split('\n')
+	const originContentLength = originContent.length
+
+	const [contents, setContents] = useState(originContent)
+	const handleShowAllContent = () => {
+		setIsShow(false)
+		setContents(originContent)
+	}
+	useEffect(() => {
+		if (windowWidth < 1200 && originContentLength > 3) {
+			const contentsTemp = contents.filter((t, i) => i <= 2)
+			setIsShow(true)
+			setContents(contentsTemp)
+		} else {
+			handleShowAllContent()
+		}
+	}, [windowWidth])
+
 	useEffect(() => {
 		const hadleResize = (event) => {
+
 			setWindowWidth(event.srcElement.innerWidth)
 		}
 		window.addEventListener('resize', hadleResize)
@@ -15,22 +34,30 @@ function About({ about }) {
 			window.removeEventListener('resize', hadleResize)
 		}
 	}, [])
-	const numberOfP = Math.floor(windowWidth / 300)
-
 	return (
 		<Box sx={{
 			maxWidth: '100%',
-			margin: '80px auto 40px',
-			display: {
-				xs: 'none',
-				sm: 'flex'
+			margin: '0 auto ',
+			display: 'flex',
+			flexDirection: {
+				xs: 'column-reverse',
+				lg: 'row'
 			},
 			alignItems: 'center',
-			padding: '0 20px'
+			padding: '40px 20px ',
+			backgroundColor: darkTheme ? 'primary.dark' : 'primary.main',
+			color: darkTheme ? 'primary.main' : 'primary.dark',
+			gap: '20px'
 		}}>
 			<Box sx={{
-				flex: '0 0 50%',
-				maxWidth: '50%'
+				flex: {
+					xs: '0 0 50%',
+					lg: '0 0 100%',
+				},
+				maxWidth: {
+					xs: '100%',
+					lg: '50%',
+				}
 			}}>
 				<img src={about.thumb}
 					alt=""
@@ -43,17 +70,30 @@ function About({ about }) {
 			<Box sx={{
 				p: {
 					xs: '0 12px',
-					md: '0 80px'
+					md: '0 20px',
+					lg: '0 80px'
 				},
-				textAlign: 'left',
+				textAlign: {
+					xs: 'center',
+					lg: 'left'
+				},
 				fontFamily: 'fontCustom',
-				flex: '0 0 50%',
-				maxWidth: '50%',
+				flex: {
+					xs: '0 0 50%',
+					lg: '0 0 100%'
+				},
+				maxWidth: {
+					xs: '100%',
+					lg: '50%'
+				},
 				'& .MuiTypography-root.MuiTypography-h1': {
-					maxWidth: '500px',
+					maxWidth: {
+						xs: '100%',
+						lg: '500px'
+					},
 					fontWeight: '300',
 					fontSize: {
-						xs: '32px',
+						xs: '28px',
 						md: '40px'
 					},
 					lineHeight: '44px',
@@ -98,8 +138,7 @@ function About({ about }) {
 						overflow: 'hidden'
 					}
 				}}>
-					{about.content.split('\n').map((content, index) => {
-						if (index >= numberOfP - 1) return
+					{contents.map((content, index) => {
 						return (
 							<Typography
 								variant="body1"
@@ -110,9 +149,15 @@ function About({ about }) {
 						)
 					}
 					)}
+					{isShow && <Typography
+						variant="body1"
+						component="p"
+						onClick={() => handleShowAllContent()}
+						sx={{ cursor: 'pointer', fontWeight: 'bold' }}
+					>
+						Xem thêm
+					</Typography>}
 				</Box>
-				<Button variant="contained"><Link to='/about-cur'>Read more</Link></Button>
-
 			</Box>
 
 

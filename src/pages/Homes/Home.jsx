@@ -1,13 +1,14 @@
 import Header from '~/components/Header/Header'
-import Footer from '~/components/Footer/Footer'
 import Slider from '~/components/Slider/Slider'
 import Intro from '~/components/Intro/Intro'
 import About from '~/components/AboutComponent/About'
 import BestSeller from '~/components/BestSeller/BestSeller'
+import Footer from '~/components/Footer/Footer'
 
+import Box from '@mui/material/Box'
 import { mockData } from '~/apis/mock'
-import { Box } from '@mui/material'
 import { maxForQuantityAndType } from '~/untils/format'
+
 function Home() {
 	const topList = mockData.products.filter(item => item.type === 'top')
 	const bottomList = mockData.products.filter(item => item.type === 'bottom')
@@ -19,9 +20,9 @@ function Home() {
 
 			<Header />
 
-			<Slider slide={mockData.page.slide} />
+			<Slider slide={mockData.homePage.slide} homePage />
 
-			<Intro intro={mockData.page.intro} />
+			<Intro intro={mockData.homePage.intro} />
 
 			<BestSeller bestSeller={topBestSeller} />
 
@@ -49,7 +50,7 @@ function Home() {
 						md: '50%'
 					}
 				}}>
-					<img src={mockData.page.thumbShirt}
+					<img src={mockData.homePage.thumbShirt}
 						alt=""
 						style={{
 							width: '100%',
@@ -68,7 +69,7 @@ function Home() {
 						md: '50%'
 					}
 				}}>
-					<img src={mockData.page.thumbPant}
+					<img src={mockData.homePage.thumbPant}
 						alt=""
 						style={{
 							width: '100%',
@@ -81,7 +82,7 @@ function Home() {
 			<BestSeller bestSeller={bottomBestSeller} />
 
 
-			<About about={mockData.page.about} />
+			<About about={mockData.homePage.about} homePage />
 
 			<Footer />
 
