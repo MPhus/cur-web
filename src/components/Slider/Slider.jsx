@@ -2,13 +2,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 
-function Slider({ slide, homePage }) {
+function Slider({ slide, homePage, storePage }) {
 
 	return (
 		<Box sx={{
 			position: 'relative',
 			width: '100%',
-			height: '800px'
+			height: storePage ? '400px' : '800px'
 		}}>
 			<img src={slide.thumb}
 				alt=""
@@ -20,7 +20,7 @@ function Slider({ slide, homePage }) {
 					minHeight: '100%',
 					maxHeight: '100%',
 					objectFit: 'cover',
-					objectPosition: 'center center',
+					objectPosition: storePage === 'bottom' ? 'top' : 'center center',
 					filter: 'brightness(64%)'
 				}}
 			/>

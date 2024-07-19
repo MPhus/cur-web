@@ -2,29 +2,27 @@ import Header from '~/components/Header/Header'
 import Slider from '~/components/Slider/Slider'
 import Intro from '~/components/Intro/Intro'
 import About from '~/components/AboutComponent/About'
-import BestSeller from '~/components/BestSeller/BestSeller'
+import ProductList from '~/components/ProductList/ProductList'
 import Footer from '~/components/Footer/Footer'
 
 import Box from '@mui/material/Box'
-import { mockData } from '~/apis/mock'
-import { maxForQuantityAndType } from '~/untils/format'
+import { getHomePage, getBestSeller } from '~/apis/mock'
 
 function Home() {
-	const topList = mockData.products.filter(item => item.type === 'top')
-	const bottomList = mockData.products.filter(item => item.type === 'bottom')
-	const topBestSeller = maxForQuantityAndType(topList, 4, 'sold')
-	const bottomBestSeller = maxForQuantityAndType(bottomList, 4, 'sold')
+	const homePage = getHomePage()
+	const topBestSeller = getBestSeller('top', 4, 'sold')
+	const bottomBestSeller = getBestSeller('bottom', 4, 'sold')
 
 	return (
 		<div style={{ overflow: 'hidden' }} >
 
 			<Header />
 
-			<Slider slide={mockData.homePage.slide} homePage />
+			<Slider slide={homePage.slide} homePage />
 
-			<Intro intro={mockData.homePage.intro} />
+			<Intro intro={homePage.intro} />
 
-			<BestSeller bestSeller={topBestSeller} />
+			<ProductList products={topBestSeller} homePage />
 
 			<Box sx={{
 				display: 'flex',
@@ -50,7 +48,7 @@ function Home() {
 						md: '50%'
 					}
 				}}>
-					<img src={mockData.homePage.thumbShirt}
+					<img src={homePage.thumbShirt}
 						alt=""
 						style={{
 							width: '100%',
@@ -69,7 +67,7 @@ function Home() {
 						md: '50%'
 					}
 				}}>
-					<img src={mockData.homePage.thumbPant}
+					<img src={homePage.thumbPant}
 						alt=""
 						style={{
 							width: '100%',
@@ -79,10 +77,10 @@ function Home() {
 				</Box>
 			</Box>
 
-			<BestSeller bestSeller={bottomBestSeller} />
+			<ProductList products={bottomBestSeller} homePage />
 
 
-			<About about={mockData.homePage.about} homePage />
+			<About about={homePage.about} homePage />
 
 			<Footer />
 

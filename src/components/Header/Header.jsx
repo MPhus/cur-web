@@ -16,8 +16,8 @@ import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black
 import { ReactComponent as ShirtIcon } from '~/assets/svgIcon/tshirt.svg'
 import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
 
-function Header({ homePage }) {
-	const [blur, setBlur] = useState(false)
+function Header({ detail }) {
+	const [blur, setBlur] = useState(detail)
 	const [openMenu, setOpenMenu] = useState(false)
 	const [openCart, setOpenCart] = useState(false)
 
@@ -30,7 +30,7 @@ function Header({ homePage }) {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			setBlur(window.scrollY > 120)
+			setBlur(detail || window.scrollY > 120)
 		}
 
 		window.addEventListener('scroll', handleScroll)
@@ -57,7 +57,7 @@ function Header({ homePage }) {
 			left: 0,
 			right: 0,
 			zIndex: '9',
-			borderBottom: '1px solid #fff'
+			borderBottom: !detail ? '1px solid #fff' : '1px solid #000'
 		}}>
 			<Box sx={{
 				display: {
@@ -67,13 +67,6 @@ function Header({ homePage }) {
 				alignItems: 'center',
 				justifyContent: 'space-between',
 				maxWidth: '350px',
-				// backgroundColor: {
-				// 	xs: 'red',
-				// 	sm: 'blue',
-				// 	md: 'green',
-				// 	lg: 'yellow',
-				// 	xl: 'purple'
-				// },
 				minWidth: {
 					md: '300px',
 					lg: '350px'
@@ -97,13 +90,13 @@ function Header({ homePage }) {
 				}
 			}}>
 				<Button variant="text" >
-					<Link to='/store'>
+					<Link to='/store-tops'>
 						Shirts
 					</Link>
 				</Button>
 
 				<Button variant="text" >
-					<Link to='/store'>Pants</Link>
+					<Link to='/store-bottoms'>Pants</Link>
 				</Button>
 				<Button variant="text" >
 					<Link to='/other'>Other...</Link>
@@ -114,7 +107,6 @@ function Header({ homePage }) {
 
 			<Box sx={{
 				display: { md: 'none' }
-
 			}}>
 				<Tooltip title="Menu">
 					<Button
@@ -168,14 +160,14 @@ function Header({ homePage }) {
 							<CloseIcon sx={{ fontSize: '28px' }} />
 						</Button>
 						<MenuItem>
-							<Link to='/store'>
+							<Link to='/store-tops'>
 								<ShirtIcon />
 								Shirts
 							</Link>
 						</MenuItem>
 
 						<MenuItem>
-							<Link to='/store'>
+							<Link to='/store-bottoms'>
 								<PantIcon />Pants
 							</Link>
 						</MenuItem>
