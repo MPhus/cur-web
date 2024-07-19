@@ -60,8 +60,16 @@ const theme = extendTheme({
 		MuiFormLabel: {
 			styleOverrides: {
 				root: ({ theme }) => ({
-					color: theme.palette.primary.main,
-					fontSize: '0.875rem'
+					color: '#000 !important',
+					[theme.breakpoints.up('md')]: {
+						fontSize: '20px'
+					},
+					[theme.breakpoints.down('md')]: {
+						fontSize: '16px',
+						lineHeight: '2'
+					},
+					left: 'auto !important',
+					right: '50px'
 				})
 			}
 		},
@@ -77,8 +85,8 @@ const theme = extendTheme({
 		MuiOutlinedInput: {
 			styleOverrides: {
 				root: ({ theme }) => ({
-					color: theme.palette.primary.main,
-					fontSize: '0.875rem',
+					color: theme.palette.primary.dark,
+					fontSize: '20px',
 					'& .MuiOutlinedInput-notchedOutline': {
 						borderColor: theme.palette.primary.light,
 						borderWidth: '1px !important'

@@ -52,11 +52,11 @@ function About({ about, darkTheme }) {
 			<Box sx={{
 				flex: {
 					xs: '0 0 50%',
-					lg: '0 0 100%',
+					lg: '0 0 100%'
 				},
 				maxWidth: {
 					xs: '100%',
-					lg: '50%',
+					lg: '50%'
 				}
 			}}>
 				<img src={about.thumb}
