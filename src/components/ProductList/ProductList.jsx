@@ -3,13 +3,27 @@ import Typography from '@mui/material/Typography'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
 import { Link } from 'react-router-dom'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '~/redux/cart'
+import { toast } from 'react-toastify'
 
 function BestSeller({ products, homePage }) {
 	const productType = products[0].type === 'top' ? 'shirt' : 'pant'
+	const dispatch = useDispatch()
+
+	const handleAddToCard = (e, id) => {
+		toast('Đã thêm sản phẩm vào giỏ hàng')
+		e.preventDefault()
+		dispatch(addToCart({
+			id,
+			quantity: 1
+		}))
+	}
+
 	return (
 		<Box sx={{
 			maxWidth: '100%',
@@ -99,8 +113,11 @@ function BestSeller({ products, homePage }) {
 								padding: '10px',
 								boder: '1px solid #fff'
 							}}>
-								{/* <Button variant="contained"
+								<Button variant="contained"
 									endIcon={<AddShoppingCartIcon />}
+									onClick={(e) => {
+										handleAddToCard(e, item._id)
+									}}
 									sx={{
 										backgroundColor: 'primary.main',
 										color: 'primary.dark',
@@ -113,7 +130,7 @@ function BestSeller({ products, homePage }) {
 
 											opacity: '0.8'
 										}
-									}}> Thêm vào giỏ hàng</Button> */}
+									}}> Thêm vào giỏ hàng</Button>
 							</Box>
 							<CardMedia
 								component="img"
@@ -138,7 +155,7 @@ function BestSeller({ products, homePage }) {
 							<CardContent sx={{ p: '8px 0' }}>
 
 								<Typography gutterBottom variant="h6" component="div" sx={{ textAlign: 'left', textTransform: 'capitalize' }}>
-									{`${item.color} ${item.fabric} ${productType} `}
+									{`${item.color === 'other' ? '' : item.color} ${item.fabric === 'other' ? '' : item.fabric} ${productType} `}
 								</Typography>
 
 								<Box sx={{ display: 'flex', gap: '4px' }}>

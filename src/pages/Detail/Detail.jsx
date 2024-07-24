@@ -4,12 +4,26 @@ import { Box, Button, Typography } from '@mui/material'
 import Footer from '~/components/Footer/Footer'
 import Header from '~/components/Header/Header'
 import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '~/redux/cart'
+import { toast } from 'react-toastify'
 function Detail() {
 	const { id } = useParams()
 	const detail = getProductById(id)
 	const productType = detail.type === 'top' ? 'shirt' : 'pant'
 	const remain = detail.quantity - detail.sold
 	const [isShow, setIsShow] = useState(false)
+
+	// const cart = useSelector(state => state.cart.items)
+
+	const dispatch = useDispatch()
+	const handleAddToCart = () => {
+		toast('Đã thêm sản phẩm vào giỏ hàng')
+		dispatch(addToCart({
+			id,
+			quantity: 1
+		}))
+	}
 
 	const originContent = detail.description.split('\n')
 	const originContentLength = originContent.length
@@ -20,6 +34,7 @@ function Detail() {
 		setIsShow(false)
 		setContents(originContent)
 	}
+
 	useEffect(() => {
 		if (originContentLength > 3) {
 			const contentsTemp = contents.filter((t, i) => i <= 2)
@@ -29,6 +44,7 @@ function Detail() {
 			handleShowAllContent()
 		}
 	}, [])
+
 
 	return (
 		<Box >
@@ -87,7 +103,7 @@ function Detail() {
 									md: '48px'
 								}
 							}}>
-							{`${detail.color} ${detail.fabric} ${productType} `}
+							{`${detail.color === 'other' ? '' : detail.color} ${detail.fabric === 'other' ? '' : detail.fabric} ${productType} `}
 						</Typography>
 
 						<Typography variant='h6'
@@ -219,7 +235,7 @@ function Detail() {
 								opacity: '0.8'
 							}
 						}}> Mua ngay</Button>
-						<Button variant="contained"
+						<Button variant="contained" onClick={handleAddToCart}
 							sx={{
 								backgroundColor: 'primary.main',
 								color: 'primary.dark',
