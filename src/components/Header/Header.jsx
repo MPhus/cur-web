@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
 import MenuList from '@mui/material/MenuList'
@@ -10,6 +12,7 @@ import LocalMallIcon from '@mui/icons-material/LocalMall'
 import MenuItem from '@mui/material/MenuItem'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
+import Badge from '@mui/material/Badge'
 
 import { ReactComponent as LogoIcon } from '~/assets/svgIcon/curlogob.svg'
 import { ReactComponent as LogoIconBlack } from '~/assets/svgIcon/curlogob_black.svg'
@@ -19,14 +22,8 @@ import { ReactComponent as PantIcon } from '~/assets/svgIcon/pant.svg'
 function Header({ detail }) {
 	const [blur, setBlur] = useState(detail)
 	const [openMenu, setOpenMenu] = useState(false)
-	const [openCart, setOpenCart] = useState(false)
 
-	const toggleMenu = (newOpen) => () => {
-		setOpenMenu(newOpen)
-	}
-	const toggleCart = (newOpen) => () => {
-		setOpenCart(newOpen)
-	}
+	const productInCart = useSelector(state => state.cart.items)
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -38,6 +35,10 @@ function Header({ detail }) {
 			window.removeEventListener('scroll', handleScroll)
 		}
 	}, [])
+
+	const toggleMenu = (newOpen) => () => {
+		setOpenMenu(newOpen)
+	}
 
 	return (
 		<Box sx={{
@@ -57,7 +58,10 @@ function Header({ detail }) {
 			left: 0,
 			right: 0,
 			zIndex: '9',
-			borderBottom: !detail ? '1px solid #fff' : '1px solid #000'
+			borderBottom: !detail ? '1px solid #fff' : '1px solid #000',
+			'& a': {
+				textDecoration: 'none'
+			},
 		}}>
 			<Box sx={{
 				display: {
@@ -197,100 +201,52 @@ function Header({ detail }) {
 
 			</Box>
 
-			<Box sx={{
-				display: 'flex',
-				maxWidth: '350px',
-				minWidth: {
-					md: '300px',
-					lg: '350px'
-				},
-				justifyContent: 'flex-end'
-			}}>
-				<Button onClick={toggleCart(true)} variant="text" sx={{
-					display: {
-						xs: 'none',
-						md: 'inline-flex'
-					},
-					textTransform: 'uppercase',
-					fontSize: '16px',
-					borderBottom: '1px solid transparent',
-					boxShadow: 'none',
-					borderRadius: '0px',
-					'&:hover': {
-						borderBottom: '1px solid #fff'
-					},
-					'& .MuiButton-icon': {
-						mb: '8px'
-					}
-				}} endIcon={<LocalMallIcon />}>Card</Button>
 
-				<Button onClick={toggleCart(true)} sx={{
-					display: {
-						xs: 'block',
-						md: 'none'
-					}
+
+			<Link to='/cart'>
+				<Box sx={{
+					display: 'flex',
+					maxWidth: '350px',
+					minWidth: {
+						md: '300px',
+						lg: '350px'
+					},
+					justifyContent: 'flex-end'
 				}}>
-					<LocalMallIcon sx={{
-						mt: '4px'
-					}} />
-				</Button>
-				<Drawer
-					open={openCart} onClose={toggleCart(false)} anchor='right' sx={{
-						'& .MuiPaper-root': {
-							width: {
-								xs: '100%',
-								sm: '50%'
-							}
+					<Button variant="text" sx={{
+						display: {
+							xs: 'none',
+							md: 'inline-flex'
+						},
+						textTransform: 'uppercase',
+						fontSize: '16px',
+						borderBottom: '1px solid transparent',
+						boxShadow: 'none',
+						borderRadius: '0px',
+						'&:hover': {
+							borderBottom: '1px solid #fff'
+						},
+						'& .MuiButton-icon': {
+							mb: '8px'
 						}
-					}}
-				>
-					<MenuList sx={{
-						display: 'flex',
-						flexDirection: 'column',
-						gap: '24px',
-						p: '12px 8px',
-						'& .MuiMenuItem-root': {
-							textTransform: 'uppercase',
-							fontSize: '20px',
-							boxShadow: 'none',
-							borderRadius: '0px',
-							width: '100%',
-							color: 'primary.dark',
-							justifyContent: 'flex-start',
-							gap: '16px',
-							letterSpacing: '2px'
-						}
-					}}>
+					}} endIcon={<LocalMallIcon />}>Cart</Button>
+
+					<Badge badgeContent={productInCart.length ? productInCart.length : undefined} color="error">
 						<Button sx={{
-							alignSelf: 'flex-end',
-							color: 'primary.dark',
-							width: '32px',
-							height: '32px'
-						}} onClick={toggleCart(false)}>
-							<CloseIcon sx={{ fontSize: '28px' }} />
+							display: {
+								xs: 'block',
+								md: 'none'
+							}
+						}}>
+							<LocalMallIcon sx={{
+								mt: '4px'
+							}} />
 						</Button>
-						<MenuItem>
-							<ShirtIcon />
-							Shirts
-						</MenuItem>
 
-						<MenuItem>
-							<PantIcon />Pants
-						</MenuItem>
+					</Badge>
 
-						<MenuItem>
-							<LogoIconBlack />About CUR
-						</MenuItem>
-						<SvgIcon component={LogoIconBlack} inheritViewBox sx={{
-							height: '100px',
-							width: '100px',
-							alignSelf: 'center',
-							flex: '1'
-						}} />
-					</MenuList>
-				</Drawer>
-
-			</Box>
+				</Box>
+			</Link>
 		</Box >
 	)
 }
