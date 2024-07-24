@@ -4,6 +4,9 @@ import Store from './pages/Store/Store'
 import Other from './pages/Other/Other'
 import Detail from '~/pages/Detail/Detail'
 import Cart from '~/pages/Cart/Cart'
+import Login from './pages/Login/Login'
+import Management from './pages/Management/Management'
+import Admin from './pages/Admin/Admin'
 function App() {
 
   return (
@@ -14,6 +17,9 @@ function App() {
       <Route path='/store/:id' element={<Detail />} />
       <Route path='/other' element={<Other />} />
       <Route path='/cart' element={<Cart />} />
+      <Route path='/login' element={<Login />} />
+      <Route path='/admin' element={<Admin />} />
+      <Route path='/manage' element={<Management />} />
     </Routes>
   )
 }
