@@ -16,6 +16,11 @@ const theme = extendTheme({
 			dark: '#000',
 			contrastText: '#000'
 		},
+		secondary: {
+			main: '#4F6F52',
+			dark: '#000',
+			contrastText: '#000'
+		},
 		text: {
 			primary: '#000'
 		},

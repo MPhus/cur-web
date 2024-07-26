@@ -283,7 +283,7 @@ function Cart() {
 								sx={{
 									backgroundColor: 'primary.dark',
 									color: 'primary.main',
-									padding: '8px 12px',
+									padding: '0',
 									textTransform: 'uppercase',
 									fontSize: '16px',
 									minWidth: '45%',
@@ -297,8 +297,15 @@ function Cart() {
 									'&:hover': {
 										backgroundColor: 'primary.dark',
 										opacity: '0.8'
+									},
+									'& a': {
+										color: 'primary.main',
+										textDecoration: 'none',
+										width: '100%',
+										padding: '8px 12px',
+
 									}
-								}}>Thanh toán</Button>
+								}}><Link to='/checkout' > Mua ngay</Link></Button>
 						</Box>
 					</Box>}
 

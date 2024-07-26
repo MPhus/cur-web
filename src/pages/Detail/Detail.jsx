@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getProductById } from '~/apis/mock'
 import { Box, Button, Typography } from '@mui/material'
 import Footer from '~/components/Footer/Footer'
@@ -216,25 +216,32 @@ function Detail() {
 							md: 'row'
 						}
 					}}>
-						<Button variant="contained" sx={{
-							backgroundColor: 'primary.dark',
-							flex: '1',
-							padding: '8px 0',
-							textTransform: 'uppercase',
-							fontSize: '16px',
-							color: 'primary.main',
-							transform: 'translateY(20px)',
-							transition: 'all linear .3s',
-							mb: {
-								xs: '2px',
-								md: '16px'
-							},
-							borderRadius: '8px',
-							'&:hover': {
+						<Button variant="contained"
+							onClick={handleAddToCart}
+							sx={{
 								backgroundColor: 'primary.dark',
-								opacity: '0.8'
-							}
-						}}> Mua ngay</Button>
+								flex: '1',
+								textTransform: 'uppercase',
+								fontSize: '16px',
+								transform: 'translateY(20px)',
+								transition: 'all linear .3s',
+								p: '0',
+								borderRadius: '8px',
+								mb: {
+									xs: '2px',
+									md: '16px'
+								},
+								'&:hover': {
+									backgroundColor: 'primary.dark',
+									opacity: '0.8'
+								},
+								'& a': {
+									color: 'primary.main',
+									textDecoration: 'none',
+									width: '100%',
+									padding: '8px 0'
+								},
+							}}> <Link to='/checkout' > Mua ngay</Link></Button>
 						<Button variant="contained" onClick={handleAddToCart}
 							sx={{
 								backgroundColor: 'primary.main',
